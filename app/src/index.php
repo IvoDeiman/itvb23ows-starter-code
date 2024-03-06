@@ -1,6 +1,8 @@
 <?php
     session_start();
 
+    use Database;
+
     include_once 'util.php';
 
     if (!isset($_SESSION['board'])) {

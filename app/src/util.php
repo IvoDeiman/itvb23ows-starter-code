@@ -11,7 +11,7 @@ function isNeighbour($a, $b) {
     return false;
 }
 
-function hasNeighBour($a, $board) {
+function hasNeighbour($a, $board) {
     foreach (array_keys($board) as $b) {
         if (isNeighbour($a, $b)) return true;
     }
@@ -31,7 +31,7 @@ function len($tile) {
 }
 
 function slide($board, $from, $to) {
-    if (!hasNeighBour($to, $board)) return false;
+    if (!hasNeighbour($to, $board)) return false;
     if (!isNeighbour($from, $to)) return false;
     $b = explode(',', $to);
     $common = [];
