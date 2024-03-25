@@ -4,11 +4,12 @@ namespace Managers;
 use Actor\Actor;
 
 class ActorManager {
-    private static $instances = [];
-    private static $actors = array();
+    private static array $instances = array();
+    private static array $actors = array();
 
     protected function __construct() { }
 
+    //Make Manager Singleton
     public static function getInstance() : ActorManager {
         $subclass = static::class;
         if(!isset(self::$instances[$subclass])) {
