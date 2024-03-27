@@ -12,7 +12,7 @@ class Actor {
     protected array $board;
 
     public function __construct(TileColor $tileColor, Vector2 $initialPos, ActorType $actorType) {
-        $this->id = $this->generateId();
+        $this->setId($this->generateId());
         $this->setTileColor($tileColor);
         $this->setPosition($initialPos);
         $this->setActorType($actorType);
@@ -52,13 +52,18 @@ class Actor {
             $c = $st[count($st) - 1][0];
             if($c != $player && $this->isNeighbour($a, $b)) return false;
         }
+        return true;
     }
 
-    public function generateId(): int {
-        $randomInt = random_int(0,10000);
-        if(ActorManager::isRegistered($randomInt))
+    private function generateId(): int {
+        $randId = rand(0,100);
+        if(ActorManager::isRegistered($randId))
             $this->generateId();
-        return $randomInt;
+        return $randId;
+    }
+
+    public function setId(int $newId): void {
+        $this->id = $newId;
     }
 
     public function getId(): int {
