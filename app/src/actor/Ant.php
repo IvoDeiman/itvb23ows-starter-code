@@ -9,4 +9,10 @@ class Ant extends Actor {
     {
         parent::__construct($tileColor, $initialPos, ActorType::Ant);
     }
+
+    public function move(Vector2 $currentPos, Vector2 $newPosition)
+    {
+        parent::move($currentPos, $newPosition);
+
+    }
 }

@@ -1,2 +1,3 @@
-FROM mysql:5.7
+# Hive Database Dockerfile
+FROM mysql:8.2.0
 COPY ./hive.sql ./docker-entrypoint-initdb.d/

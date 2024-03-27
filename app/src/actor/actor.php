@@ -1,7 +1,7 @@
 <?php
 namespace Actor;
 
-use Managers\ActorManager;
+use Managers\{ActorManager, BoardManager};
 use util\{ActorType, TileColor, Vector2};
 
 class Actor {
@@ -9,6 +9,7 @@ class Actor {
     protected ActorType $actorType;
     protected TileColor $tileColor;
     protected Vector2 $position;
+    protected array $board;
 
     public function __construct(TileColor $tileColor, Vector2 $initialPos, ActorType $actorType) {
         $this->id = $this->generateId();
@@ -24,7 +25,8 @@ class Actor {
         ActorManager::unregister($this);
     }
 
-    public function move(Vector2 $newPosition) {
+    public function move(Vector2 $currentPos ,Vector2 $newPosition) {
+        $this->board = BoardManager::getBoard();
         $this->setPosition($newPosition);
     }
 

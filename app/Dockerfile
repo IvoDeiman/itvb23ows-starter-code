@@ -1,5 +1,8 @@
-FROM php
+#Application Dockerfile
+FROM: php:8.3.1
+
+ARG MYSQL_DATABASE
+ARG MYSQL_ROOT_PASSWORD
+
 RUN docker-php-ext-install mysqli
-RUN docker-php-ext-enable mysqli
 COPY ./src/ .
-EXPOSE 80

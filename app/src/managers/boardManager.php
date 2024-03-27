@@ -5,9 +5,18 @@ use Actor\Actor;
 use util\Vector2;
 
 class BoardManager {
+    private static $instances = [];
 
     protected function __construct() {
-        self::setBoard();
+        self::setBoard($this);
+    }
+
+    public static function getInstance() : BoardManager {
+        $subclass = static::class;
+        if(!isset(self::$instances[$subclass])){
+            self::$instances[$subclass] = new static();
+        }
+        return self::$instances[$subclass];
     }
 
     public static function setBoard($board) {
